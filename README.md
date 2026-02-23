@@ -29,7 +29,53 @@ To learn more about Next.js, take a look at the following resources:
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+
+## Prisma Setup & Connection
+
+This project uses [Prisma ORM](https://www.prisma.io/) for database access.
+
+### Prisma Version
+
+```
+prisma                  : 6.19.2
+@prisma/client          : 6.19.2
+```
+
+### Steps to Connect Prisma
+
+1. **Install dependencies** (if not already):
+	```bash
+	npm install prisma @prisma/client
+	```
+
+2. **Configure your database connection**:
+	- Edit the `DATABASE_URL` in your `.env` file to point to your MySQL database. Example:
+	  ```env
+	  DATABASE_URL="mysql://USER:PASSWORD@HOST:PORT/DATABASE"
+	  ```
+
+3. **Prisma schema**:
+	- The schema is defined in `prisma/schema.prisma`.
+
+4. **Generate Prisma Client**:
+	```bash
+	npx prisma generate
+	```
+
+5. **Run migrations (if you change the schema)**:
+	```bash
+	npx prisma migrate dev --name init
+	```
+
+6. **Use Prisma Client in your code**:
+	- Import and use the client from `lib/prisma.ts`.
+
+7. **Check Prisma Studio (optional, for DB UI):**
+	```bash
+	npx prisma studio
+	```
+
+---
 
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
